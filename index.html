@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,6 +32,7 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
             display: flex; /* Use flexbox for side-by-side layout */
+            flex-direction: column; /* Stack elements vertically on smaller screens */
             justify-content: space-between; /* Space between items */
             align-items: center; /* Align items vertically */
         }
@@ -41,7 +42,7 @@
             }
 
         .animation-container {
-            width: 60%; /* Adjust width as needed */
+            width: 90%; /* Adjust width as needed */
             height: 300px; /* Adjust as needed */
             margin: 20px 0;
             position: relative;
@@ -50,7 +51,8 @@
         }
 
         .project-info {
-            width: 30%; /* Adjust width as needed */
+            width: 100%; /* Adjust width as needed */
+            text-align: center; /* Center text on smaller screens */
         }
 
         .media-container { /* Container for image/video */
@@ -102,7 +104,7 @@
             }
 
             .upload-form::before {
-                content: '+';
+                content: '';
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -130,8 +132,8 @@
         }
 
         .project-item {
-            width: 250px; /* Adjust width as needed */
-            margin: 10px;
+            width: 90%; /* Adjust width as needed */
+            margin: 10px auto; /* Center the item and add margin */
             border: 1px solid #ccc;
             border-radius: 5px;
             overflow: hidden; /* Hide any content that overflows */
@@ -208,7 +210,19 @@
                 padding: 5px;
                 border: 1px solid #ccc;
                 border-radius: 3px;
+                width: 100%; /* Make input take full width on smaller screens */
             }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .animation-container {
+                width: 100%; /* Make animation container full width on smaller screens */
+            }
+
+            .project-info {
+                margin-top: 10px; /* Add margin to separate info from animation */
+            }
+        }
     </style>
 </head>
 <body>
