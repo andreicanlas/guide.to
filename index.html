@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Projects</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #f0f0f0; /* Light gray background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .portfolio-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex; /* Use flexbox for side-by-side layout */
+            justify-content: space-between; /* Space between items */
+            align-items: center; /* Align items vertically */
+        }
+
+            .portfolio-item h2 {
+                margin-top: 0;
+            }
+
+        .animation-container {
+            width: 60%; /* Adjust width as needed */
+            height: 300px; /* Adjust as needed */
+            margin: 20px 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .project-info {
+            width: 30%; /* Adjust width as needed */
+        }
+
+        .media-container { /* Container for image/video */
+            width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+
+            .media-container img,
+            .media-container video {
+                width: 100%;
+                height: auto;
+            }
+
+        @keyframes move {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(-100px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .upload-form {
+            display: inline-block; /* Make the form a block element */
+            position: relative; /* Position the button within the form */
+            width: 150px; /* Adjust width as needed */
+            height: 150px; /* Adjust height as needed */
+            border-radius: 50%; /* Make it circular */
+            background-color: #f0f0f0; /* Light gray background */
+            border: 2px solid #ccc; /* Light gray border */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            overflow: hidden; /* Hide the input element */
+        }
+
+            .upload-form input[type="file"] {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0; /* Make the input transparent */
+                cursor: pointer; /* Change cursor to pointer on hover */
+            }
+
+            .upload-form::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80%;
+                height: 80%;
+                background-image: url("https://www.flaticon.com/svg/static/icons/svg/1055/1055321.svg"); /* Replace with your camera icon */
+                background-size: cover;
+                background-repeat: no-repeat;
+                border-radius: 50%;
+            }
+
+
+
+            .upload-form:hover {
+                background-color: #ddd; /* Darker gray on hover */
+            }
+
+        /* Project List Styling */
+        .project-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .project-item {
+            width: 250px; /* Adjust width as needed */
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden; /* Hide any content that overflows */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative; /* To position the delete button */
+        }
+
+            .project-item img {
+                width: 100%;
+                height: auto;
+            }
+
+            .project-item video {
+                width: 100%;
+                height: auto;
+                /* Add controls for video */
+                controls: true;
+            }
+
+            .project-item h3 {
+                padding: 10px;
+                background-color: #f0f0f0;
+                color: #333;
+                margin: 0;
+            }
+
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f44336; /* Red background */
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block; /* Show by default */
+            border: none; /* Remove default button border */
+            font-size: 14px; /* Adjust font size as needed */
+            font-weight: bold; /* Make text bold */
+            transition: background-color 0.3s ease; /* Add a smooth transition for hover effect */
+        }
+
+        .project-item:hover .delete-button {
+            display: block; /* Show on hover */
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(-100px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Style for the label input */
+        .label-input {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+            .label-input label {
+                margin-right: 5px;
+                font-weight: bold;
+            }
+
+            .label-input input {
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Animation Projects</h1>
+
+        <div class="portfolio-item">
+            <h2>FlipBook</h2>
+            <div class="animation-container">
+                <img src="FlipBook.jpg" width="560" height="315" id="flipbook-image">
+                <form class="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="projectFile" accept="image/*, video/*">
+                </form>
+            </div>
+            <div class="project-info">
+                <p> how to make it </p>
+                <a href="https://www.wikihow.com/Make-a-Flipbook" target="_blank"> view to see how to make it </a>
+            </div>
+        </div>
+
+        <div class="portfolio-item">
+            <h2>Animating</h2>
+            <div class="animation-container">
+                <img src="maxresdefault.jpg" width="560" height="315" id="animating-image">
+                <form class="upload-form" action="/upload" method="POST" enctype="multipart/form-data">
+                    <input type="file" name="projectFile" accept="image/*, video/*">
+                </form>
+            </div>
+            <div class="project-info">
+                <p>[Brief description of the animation and your role in its creation.]</p>
+                <a href="https://www.wikihow.com/Animate" target="_blank"> view to see how to make it </a>
+            </div>
+        </div>
+
+        <!-- Project Display Area -->
+        <div class="project-list">
+            <!-- Project items will be added here dynamically -->
+        </div>
+
+        <!-- Repeat for more portfolio items -->
+    </div>
+
+    <script>
+        const uploadForms = document.querySelectorAll('.upload-form');
+        const projectList = document.querySelector('.project-list');
+
+        // Load saved projects from local storage
+        const savedProjects = JSON.parse(localStorage.getItem('projects')) || [];
+        savedProjects.forEach(project => {
+            const projectItem = document.createElement('div');
+            projectItem.classList.add('project-item');
+            projectItem.innerHTML = `
+                            <h3>${project.label}</h3>
+                            <div class="media-container">
+                                ${project.type === 'image' ? `<img src="${project.src}" alt="${project.label}" width="${project.width}" height="${project.height}">` : `<video src="${project.src}" controls width="${project.width}" height="${project.height}"></video>`}
+                            </div>
+                            <div class="label-input">
+                                <label for="label-${project.label}">Label:</label>
+                                <input type="text" id="label-${project.label}" value="${project.label}" placeholder="Enter label">
+                            </div>
+                            <button class="delete-button">Delete</button>
+                        `;
+            projectList.appendChild(projectItem);
+
+            // Add event listener to the delete button
+            const deleteButton = projectItem.querySelector('.delete-button');
+            deleteButton.addEventListener('click', () => {
+                projectList.removeChild(projectItem);
+                // Remove project from saved projects array
+                const index = savedProjects.findIndex(p => p.label === project.label);
+                if (index !== -1) {
+                    savedProjects.splice(index, 1);
+                    localStorage.setItem('projects', JSON.stringify(savedProjects));
+                }
+            });
+        });
+
+        uploadForms.forEach(uploadForm => {
+            uploadForm.addEventListener('change', (event) => {
+                const fileInput = uploadForm.querySelector('input[type="file"]');
+                const file = fileInput.files[0];
+
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = (e) => {
+                        // Find the image element next to the upload form
+                        const imageContainer = uploadForm.parentElement;
+                        const imageElement = imageContainer.querySelector('img');
+
+                        // Store the original source URL and dimensions
+                        let originalSrc = imageElement.src;
+                        const originalWidth = imageElement.width;
+                        const originalHeight = imageElement.height;
+
+                        // Determine if it's an image or video
+                        const type = file.type.startsWith('image/') ? 'image' : 'video';
+
+                        if (type === 'image') {
+                            imageElement.src = e.target.result;
+                        } else if (type === 'video') {
+                            const video = document.createElement('video');
+                            video.src = e.target.result;
+                            video.controls = true; // Add video controls
+                            video.width = originalWidth; // Set video width
+                            video.height = originalHeight; // Set video height
+                            imageContainer.replaceChild(video, imageElement);
+                        }
+
+                        // Create a new project item
+                        const projectItem = document.createElement('div');
+                        projectItem.classList.add('project-item');
+                        projectItem.innerHTML = `
+                                            <div class="media-container">
+                                                ${type === 'image' ? `<img src="${e.target.result}" alt="${file.name}" width="${originalWidth}" height="${originalHeight}">` : `<video src="${e.target.result}" controls width="${originalWidth}" height="${originalHeight}"></video>`}
+                                            </div>
+                                            <div class="label-input">
+                                                <label for="label-${file.name}">Label:</label>
+                                                <input type="text" id="label-${file.name}" placeholder="Enter label">
+                                            </div>
+                                            <button class="delete-button">Delete</button>
+                                        `;
+
+                        // Add the project item to the project list
+                        projectList.appendChild(projectItem);
+
+                        // Add event listener to the delete button
+                        const deleteButton = projectItem.querySelector('.delete-button');
+                        deleteButton.addEventListener('click', () => {
+                            if (type === 'image') {
+                                imageElement.src = originalSrc;
+                            } else if (type === 'video') {
+                                const newImage = document.createElement('img');
+                                newImage.src = originalSrc;
+                                newImage.width = originalWidth;
+                                newImage.height = originalHeight;
+                                imageContainer.replaceChild(newImage, imageContainer.querySelector('video'));
+                            }
+
+                            projectList.removeChild(projectItem);
+                            // Remove project from saved projects array
+                            const index = savedProjects.findIndex(p => p.label === project.label);
+                            if (index !== -1) {
+                                savedProjects.splice(index, 1);
+                                localStorage.setItem('projects', JSON.stringify(savedProjects));
+                            }
+                        });
+
+                        // Add event listener to the label input
+                        const labelInput = projectItem.querySelector('.label-input input');
+                        labelInput.addEventListener('input', () => {
+                            const label = labelInput.value;
+                            // Update the project in saved projects array
+                            const index = savedProjects.findIndex(p => p.label === project.label);
+                            if (index !== -1) {
+                                savedProjects[index].label = label;
+                                localStorage.setItem('projects', JSON.stringify(savedProjects));
+                            }
+                        });
+
+                        // Save project to local storage
+                        const label = projectItem.querySelector('.label-input input').value;
+                        savedProjects.push({
+                            src: e.target.result,
+                            label: label,
+                            width: originalWidth,
+                            height: originalHeight,
+                            type: type
+                        });
+                        localStorage.setItem('projects', JSON.stringify(savedProjects));
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
